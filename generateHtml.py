@@ -221,7 +221,7 @@ if __name__=='__main__':
     #print(info_list) 
     html_list=[]
     for each in info_list:
-        qinghua=requests.get('https://api.uomg.com/api/rand.qinghua?format=json', timeout=10).json()["content"]
+        qinghua=requests.get('https://api.ghser.com/qinghua?type=json', timeout=10).json()["ishan"]
         html_str="""     
         <li class="masonry-item grid">
             <figure class="effect-sarah"> <img src="{0}" alt="" />
@@ -233,6 +233,7 @@ if __name__=='__main__':
             </li>   
         """.format(each[0],each[1],each[2],qinghua)
         html_list.append(html_str)
+        print(f'{each[0]} finished!')
     # print()        
     with open('index.html' ,'w') as f:
         f.write(html_head+' '.join(html_list).replace('\n', '')+html_footer)
